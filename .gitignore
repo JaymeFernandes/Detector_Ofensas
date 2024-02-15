@@ -1,0 +1,6 @@
+# Ignorar diretórios .vs
+.vs/
+packages/
+Detector-Ofensas/bin/
+Detector-Ofensas/obj/
+Detector-Ofensas/Properties
