@@ -21,7 +21,6 @@ namespace Detector_Ofensas
 
         protected static JaroWinkler jaroWinkler = new JaroWinkler();
         protected static Levenstein levenstein = new Levenstein();
-        private static string _jsonOfensas;
         protected static Dictionary<string, int> PalavrasProibidas = new Dictionary<string, int>();
 
         #endregion
@@ -60,9 +59,23 @@ namespace Detector_Ofensas
             return detectadas;
         }
 
+        public static void CarregarPalavrasPerosnalizada()
+        {
+            if (Directory.Exists("Language/"))
+            {
+                string[] arquivos = Directory.GetFiles("Language/", "*.json");
 
-
-        
-
+                foreach(string arquivo in arquivos)
+                {
+                    string temp = ArquivoHandler.LerArquivo(arquivo);
+                    Dictionary<string, int> language = JSON.ConvertObject(temp);
+                    PalavrasProibidas = PalavrasProibidas.Union(language).Where(X => !PalavrasProibidas.ContainsKey(X.Key)).ToDictionary(x => x.Key, x => x.Value);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory("Language/");
+            }
+        }
     }
 }

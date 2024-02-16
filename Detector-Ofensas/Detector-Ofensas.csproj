@@ -50,6 +50,7 @@
     <Compile Include="API\FormatadorLinguístico.cs" />
     <Compile Include="API\Language\PT-BR.cs" />
     <Compile Include="Detector_Ofensas.cs" />
+    <Compile Include="Modules\ArquivoHandler.cs" />
     <Compile Include="Modules\JSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidarTextoOfensivo.cs" />
