@@ -4,9 +4,9 @@ O Detector de Ofensas é uma API simples para identificação de linguagem ofens
 
 ## Funcionalidade
 
-- Detectar 118 palavras diferentes
+- Detecta 118 palavras diferentes
 - Calcula a pontuação de 1 a 100 do texto.
-- Ultramente sensivel a ofensas mesmo com caracteres trocados:
+- Ultramente sensivel a ofensas, mesmo com caracteres trocados:
 ```
   V4c@ = vaca
   t4r4d0 = tarado
@@ -60,11 +60,11 @@ O Detector de Ofensas é uma API simples para identificação de linguagem ofens
   3. ### Add de idiomas personalizados
 
   ```csharp
-  //carrega os json na pasta bin/Debug/Language/
+  //carrega todos os json na pasta bin/Debug/Language/
     FiltroRespeitoso.CarregarPalavrasPerosnalizada()
   ```
 
-  - para criar o arquivos json na pasta com palavras crie o arquivo json em ( bin/Debug/Language/ )
+  - para criar o arquivos json na pasta com palavras coloque o arquivo json em ( bin/Debug/Language/ )
 
   ```json
   {

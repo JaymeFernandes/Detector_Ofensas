@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Detector_Ofensas.Modules
+namespace Detector_Ofensas.Api.Modules
 {
     public class JSON
     {
