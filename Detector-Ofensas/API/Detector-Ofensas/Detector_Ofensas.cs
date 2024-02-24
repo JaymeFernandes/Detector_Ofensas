@@ -51,7 +51,7 @@ namespace Detector_Ofensas
         /// <summary>
         /// Carrega todas as palavra ofensivas personalizadas pelo usuario na pasta Language/
         /// </summary>
-        public static void CarregarPalavrasPerosnalizada()
+        public static void CarregarPalavrasPersonalizadas()
         {
             if (Directory.Exists("Language/"))
             {

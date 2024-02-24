@@ -61,7 +61,7 @@ O Detector de Ofensas é uma API simples para identificação de linguagem ofens
 
   ```csharp
   //carrega todos os json na pasta bin/Debug/Language/
-    FiltroRespeitoso.CarregarPalavrasPerosnalizada()
+    FiltroRespeitoso.CarregarPalavrasPersonalizadas()
   ```
 
   - para criar o arquivos json na pasta com palavras coloque o arquivo json em ( bin/Debug/Language/ )
