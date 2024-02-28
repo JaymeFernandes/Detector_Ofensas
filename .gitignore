@@ -1,6 +1,6 @@
 # Ignorar diretórios .vs
-.vs/
-packages/
-Detector-Ofensas/bin/
-Detector-Ofensas/obj/
-Detector-Ofensas/Properties
+Local-Dll/.vs/
+Local-Dll/packages/
+Local-Dll/Detector-Ofensas/bin/
+Local-Dll/Detector-Ofensas/obj/
+Local-Dll/Detector-Ofensas/Properties

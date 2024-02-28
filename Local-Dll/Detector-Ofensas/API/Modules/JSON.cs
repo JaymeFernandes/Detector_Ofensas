@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Detector_Ofensas.Api.Modules
 {
@@ -11,17 +12,12 @@ namespace Detector_Ofensas.Api.Modules
     {
         public static List<T> ConvertObject<T>(string json)
         {
-            return JsonConvert.DeserializeObject<List<T>>(json);
+            return JsonSerializer.Deserialize<List<T>>(json);
         }
 
         public static Dictionary<string, int> ConvertObject(string json)
         {
-            return JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
-        }
-
-        public static string ConvertJson<T>(List<T> values)
-        {
-            return JsonConvert.SerializeObject(values, Formatting.Indented);
+            return JsonSerializer.Deserialize<Dictionary<string, int>>(json);
         }
     }
 }
