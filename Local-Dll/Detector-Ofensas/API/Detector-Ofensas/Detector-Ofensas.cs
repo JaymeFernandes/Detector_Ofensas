@@ -4,17 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimMetrics.Net;
-using SimMetrics.Net.Metric;
-using Detector_Ofensas.Api.Modules;
-using Detector_Ofensas.Api;
-using Detector_Ofensas.Api.Language;
+using Detector_Ofensas.API;
+using Detector_Ofensas.DataBase;
+using Detector_Ofensas.DataBase.Model;
 
-namespace Detector_Ofensas
+namespace Detector_Ofensas.API
 {
-    /// <summary>
-    /// Class com os comandos publicos
-    /// </summary>
     public partial class FiltroRespeitoso : FormatadorLinguístico
     {
 
@@ -27,7 +22,8 @@ namespace Detector_Ofensas
         /// <returns>Valor de 1 a 100 de quanto foi ofensivo</returns>
         public static double ObterPercentual(string mensagem)
         {
-            if(string.IsNullOrEmpty(mensagem)) return 0;
+            mensagem = mensagem.ToLower();
+            if (string.IsNullOrEmpty(mensagem)) return 0;
 
             int pontuacaoGeral = CalcularPercentual(mensagem);
 
@@ -42,34 +38,24 @@ namespace Detector_Ofensas
         /// <returns>uma lista de todas as palavra ofensivas</returns>
         public static List<string> VerificarTexto(string mensagem)
         {
+            mensagem = mensagem.ToLower();
             if (string.IsNullOrEmpty(mensagem)) throw new ArgumentNullException(nameof(mensagem), "Foi passa uma menssagem vazia para o algoritimo");
 
             mensagem = LimparFrase(mensagem);
             return ProcurarPalavrasProibida(mensagem);
         }
 
+
         /// <summary>
         /// Carrega todas as palavra ofensivas personalizadas pelo usuario na pasta Language/
         /// </summary>
-        public static void CarregarPalavrasPersonalizadas()
+        public static void CarregarPalavrasPersonalizadas(List<Ofensa> ofensas)
         {
-            if (Directory.Exists("Language/"))
+            foreach(Ofensa ofensa in ofensas)
             {
-                string[] arquivos = Directory.GetFiles("Language/", "*.json");
-
-                foreach (string arquivo in arquivos)
-                {
-                    string temp = ArquivoHandler.LerArquivo(arquivo);
-                    Dictionary<string, int> language = JSON.ConvertObject(temp);
-                    PalavrasProibidas = PalavrasProibidas.Union(language).Where(X => !PalavrasProibidas.ContainsKey(X.Key.ToLower())).ToDictionary(x => x.Key.ToLower(), x => x.Value);
-                }
-            }
-            else
-            {
-                Directory.CreateDirectory("Language/");
+                DbService.AddOfensa(ofensa);
             }
         }
-
         #endregion
     }
 }

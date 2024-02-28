@@ -1,11 +1,11 @@
-﻿using SimMetrics.Net.Metric;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimMetrics.Net.Metric;
 
-namespace Detector_Ofensas
+namespace Detector_Ofensas.API
 {
     public partial class FiltroRespeitoso
     {

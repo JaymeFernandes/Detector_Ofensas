@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Detector_Ofensas.Api.Language
+namespace Detector_Ofensas.API.Language
 {
     public static class PT_BR
     {
-        public static Dictionary<string, int>  language = new Dictionary<string, int>() 
+        public static Dictionary<string, int> language = new Dictionary<string, int>()
         {
             { "Abortado", 100    },
             { "aborto", 100      },
@@ -128,7 +128,7 @@ namespace Detector_Ofensas.Api.Language
             { "xvideos", 100     },
             { "xxt", 100         },
             { "xxx", 100         }
-            
+
         };
     }
 }
