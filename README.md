@@ -1,6 +1,7 @@
 # Detector de Ofensas
 
 O Detector de Ofensas é uma API simples para a identificação de linguagem ofensiva em textos. Utilizando algoritmos de similaridade de strings, verifica se um texto contém palavras consideradas ofensivas.
+Foi otimizado a API que analizava 32681 caracteres em 20 segundos e diminuiu para 2 segundos
 
 # Funcionalidade
 
