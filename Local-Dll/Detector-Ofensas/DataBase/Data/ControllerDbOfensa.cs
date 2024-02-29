@@ -1,4 +1,5 @@
-﻿using Detector_Ofensas.DataBase.Model;
+﻿using Detector_Ofensas.API.Language;
+using Detector_Ofensas.DataBase.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,15 @@ namespace Detector_Ofensas.DataBase
 
 
         public static List<Ofensa> GetOfensas()
-        { 
+        {
+
+            if (DbService.OfensasCout() == 0)
+            {
+                foreach (var ofensa in PT_BR.language)
+                {
+                    DbService.AddOfensa(new Ofensa() { palavra = ofensa.Key, nivel = ofensa.Value });
+                }
+            }
 
             var result = new List<Ofensa>();
 

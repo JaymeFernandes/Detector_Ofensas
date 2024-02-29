@@ -22,23 +22,23 @@ namespace Detector_Ofensas.API
         private static List<string> ProcurarPalavrasProibida(string Text)
         {
             Text = FormatadorLinguístico.LimparFrase(Text);
-            string[] partes = Text.Split(new char[] { ' ', ',', '.', ';', ':', '-', '_', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] partes = Text.ToLower().Split(new char[] { ' ', ',', '.', ';', ':', '-', '_', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            var data = DbService.GetOfensas();
 
-            List<string> detectadas = new List<string>();
 
-            foreach (string parte in partes)
+            HashSet<string> detectadas = new HashSet<string>();
+
+            Parallel.ForEach(partes, parte =>
             {
-                if (!detectadas.Contains(parte))
+                string palavra = DetectarPalavra(parte, data);
+
+                if (!string.IsNullOrEmpty(palavra) && detectadas.Add(palavra))
                 {
-                    if (DetectarPalavra(parte) != "")
-                    {
-                        detectadas.Add(parte);
-                    }
+                    detectadas.Add(parte);
                 }
+            });
 
-            }
-
-            return detectadas;
+            return detectadas.ToList();
         }
 
 
@@ -46,44 +46,30 @@ namespace Detector_Ofensas.API
         {
             var data = DbService.GetOfensas();
             Text = FormatadorLinguístico.LimparFrase(Text);
-            string[] partes = Text.Split(new char[] { ' ', ',', '.', ';', ':', '-', '_', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] partes = Text.ToLower().Split(new char[] { ' ', ',', '.', ';', ':', '-', '_', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-            List<string> detectadas = new List<string>();
+            HashSet<string> detectadas = new HashSet<string>();
 
             int PontosDePenalidade = 0;
 
-            foreach (string parte in partes)
+            Parallel.ForEach(partes, parte =>
             {
-                if (!detectadas.Contains(parte))
+                string palavra = DetectarPalavra(parte, data);
+
+                if (!string.IsNullOrEmpty(palavra) && detectadas.Add(palavra))
                 {
-                    string palavra = DetectarPalavra(parte);
-                    if (palavra != "")
-                    {
-                        PontosDePenalidade += data.Where(x => x.palavra == palavra).Sum(x => x.nivel);
-
-                        detectadas.Add(parte);
-                    }
+                    PontosDePenalidade += data.Where(x => x.palavra == palavra).Sum(x => x.nivel);
                 }
-
-            }
+            });
 
             return (detectadas.Count > 0 ? PontosDePenalidade / detectadas.Count : PontosDePenalidade);
         }
 
 
-        private static string DetectarPalavra(string parte)
+        private static string DetectarPalavra(string parte, List<Ofensa> data)
         {
             string temp = FormatadorLinguístico.NormalizarPalavra(parte);
-            var data = DbService.GetOfensas();
             string result = "";
-
-            if (DbService.OfensasCout() == 0)
-            {
-                foreach(var ofensa in PT_BR.language)
-                {
-                    DbService.AddOfensa(new Ofensa() { palavra = ofensa.Key, nivel = ofensa.Value });
-                }
-            }
 
             if (data.Any(palavra => levenstein.GetSimilarity(palavra.palavra, parte) > 0.7 || levenstein.GetSimilarity(palavra.palavra, temp) > 0.7))
             {

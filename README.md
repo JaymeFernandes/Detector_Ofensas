@@ -31,7 +31,7 @@ O Detector de Ofensas é uma API simples para a identificação de linguagem ofe
 
 # Segurança
 
-## Proteção contra SQL Injection
+### Proteção contra SQL Injection
 
 Este projeto implementa medidas para prevenir SQL injection. Algumas das práticas de segurança incluem:
 
@@ -43,7 +43,7 @@ Este projeto implementa medidas para prevenir SQL injection. Algumas das prátic
 
 Essas práticas foram adotadas para garantir a integridade e segurança do sistema contra potenciais ataques de SQL injection.
 
-## Outras Medidas de Segurança
+### Outras Medidas de Segurança
 
 Além da proteção contra SQL injection, o projeto também implementa outras medidas de segurança, como [lista de outras práticas de segurança adotadas, se aplicável].
 
@@ -51,12 +51,12 @@ Lembramos que a segurança é um esforço contínuo, e incentivamos a revisão r
 
 # Instalação
 
-1. ## Clone o repositório para o seu ambiente local:
+1. ### Clone o repositório para o seu ambiente local:
 
    ```bash
    git clone https://github.com/seu-usuario/detector-de-ofensas.git
 
-2. ## Navegue até o diretório do projeto e Restaure as dependências do NuGet:
+2. ### Navegue até o diretório do projeto e Restaure as dependências do NuGet:
    ```bash
    # Abre o caminho:
    cd caminho/do/seu/projeto/detector-de-ofensas
@@ -71,13 +71,13 @@ Lembramos que a segurança é um esforço contínuo, e incentivamos a revisão r
 
 # Comandos
 
-  1. ## conectar com o banco de dados/DataBase:
+  1. ### conectar com o banco de dados/DataBase:
 ```csharp
 // Define a database MySQL para conectar (campo obrigatório)
 DbService.Connect("server=localhost;uid=root;pwd=Sua-Senha;");
 ```
 
-  2. ## Verificar um texto:
+  2. ### Verificar um texto:
 ```csharp
 // Define a database MySQL para conectar ou criar a database
 DbService.Connect("server=localhost;uid=root;pwd=sua-Senha;");
@@ -89,7 +89,7 @@ List<string> strings = FiltroRespeitoso.VerificarTexto(texto);
 double percentual = FiltroRespeitoso.ObterPercentual(string mensagem)
 ```
 
-  4. ## Adicionar idiomas personalizados:
+  4. ### Adicionar idiomas personalizados:
 
 ```csharp
 // Define a database MySQL para conectar ou criar a database
