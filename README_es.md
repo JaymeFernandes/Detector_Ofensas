@@ -6,7 +6,13 @@ El Detector de Ofensas es una API simple para identificar lenguaje ofensivo en t
 
 # Selector de Idioma 🌐
 
-[English](README.md) | [Português](README_pt.md) | [Espanhol](README_es.md)
+<table border=1>
+  <tr>
+    <td><a href="https://github.com/JaymeFernandes/Detector_Ofensas/blob/main/README.md">English</a></td>
+    <td><a href="https://github.com/JaymeFernandes/Detector_Ofensas/blob/main/README_pt.md">Português</a></td>
+    <td><a href="https://github.com/JaymeFernandes/Detector_Ofensas/blob/main/README_es.md">Español</a></td>
+  </tr>
+</table>
 
 <br>
 
