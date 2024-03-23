@@ -1,116 +1,143 @@
-# Detector de Ofensas
+# Offense Detector 🔍
 
-O Detector de Ofensas é uma API simples para a identificação de linguagem ofensiva em textos. Utilizando algoritmos de similaridade de strings, verifica se um texto contém palavras consideradas ofensivas.
-Foi otimizado a API que analizava 32681 caracteres em 20 segundos e diminuiu para 2 segundos
+The Offense Detector is a simple API for identifying offensive language in texts. By using string similarity algorithms, it checks if a text contains words considered offensive. The API was optimized to analyze 32,681 characters in 20 seconds and reduced it to 2 seconds.
 
-# Funcionalidade
+<br>
 
-- Detecta 118 palavras ofensivas diferentes.
-- Calcula uma pontuação de 1 a 100 para o texto.
-- Extremamente sensível a ofensas, mesmo com caracteres trocados:
+# Choose Language 🌐
+
+[English](README.md) | [Português](README_pt.md) | [Espanhol](README_es.md)
+
+<br>
+
+# Funcionalidade 🚀
+
+- Detects 118 different offensive words.
+- Calculates a score from 1 to 100 for the text.
+- Extremely sensitive to offenses, even with swapped characters:
 ```
-  V4c@ = vaca
-  t4r4d0 = tarado
-  |!x0 = lixo
+  V4c@ = cow
+  t4r4d0 = pervert
+  |!x0 = trash
 ```
 
-# Requisitos
+<br>
+
+# Requirements 🛠️
 
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/pt-br/download/dotnet-framework/net472)
 - [Visual Studio](https://visualstudio.microsoft.com/pt-br/)
 - [MySQL Workbench](https://dev.mysql.com/downloads/)
 
-# Stack utilizada
+<br>
 
-**DataBase:** [MySQL](https://www.mysql.com/)
+# Used Stack 🛠️
 
-**Back-end:** [C#](https://dotnet.microsoft.com/pt-br/languages/csharp)
+**DataBase** 
 
-# Bibliotecas Utilizadas
+[![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+
+**Back-end** 
+
+[![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://dotnet.microsoft.com/pt-br/languages/csharp)
+
+<br>
+
+# Used Libraries 📚
 - [SimMetrics.Net](https://www.nuget.org/packages/SimMetrics.Net) 
 - [MySQL.Data](https://www.nuget.org/packages/MySql.Data/)
 
-# Segurança
+<br>
 
-### Proteção contra SQL Injection
+# Security 🔒
 
-Este projeto implementa medidas para prevenir SQL injection. Algumas das práticas de segurança incluem:
+### Protection against SQL Injection 💉
 
-- **Parâmetros em Consultas SQL:** Utilizamos parâmetros em consultas SQL para evitar a concatenação direta de strings com dados fornecidos pelo usuário.
+This project implements measures to prevent SQL injection. Some security practices include:
 
-- **Validação de Entrada:** Validamos e sanitizamos todas as entradas do usuário para garantir que apenas dados válidos sejam utilizados nas consultas SQL.
+- **Parameters in SQL Queries** We use parameters in SQL queries to avoid direct concatenation of strings with user-provided data.
 
-- **Uso de Prepared Statements:** O código utiliza prepared statements, o que contribui para a prevenção automática de SQL injection.
+- **Input Validation:** We validate and sanitize all user inputs to ensure that only valid data is used in SQL queries.
 
-Essas práticas foram adotadas para garantir a integridade e segurança do sistema contra potenciais ataques de SQL injection.
+- **Use of Prepared Statements:**  The code uses prepared statements, which contributes to the automatic prevention of SQL injection.
 
-### Outras Medidas de Segurança
+These practices have been adopted to ensure the integrity and security of the system against potential SQL injection attacks.
 
-Além da proteção contra SQL injection, o projeto também implementa outras medidas de segurança, como [lista de outras práticas de segurança adotadas, se aplicável].
+### Other Security Measures 🔒
 
-Lembramos que a segurança é um esforço contínuo, e incentivamos a revisão regular das práticas de segurança conforme necessário.
+In addition to protection against SQL injection, the project also implements other security measures, such as [list any other security practices adopted, if applicable].
 
-# Instalação
+We remind you that security is an ongoing effort, and we encourage regular review of security practices as needed.
 
-1. ### Clone o repositório para o seu ambiente local:
+<br>
+
+# Installation 💻
+
+1. ### Clone the repository to your local environment:
 
    ```bash
    git clone https://github.com/seu-usuario/detector-de-ofensas.git
 
-2. ### Navegue até o diretório do projeto e Restaure as dependências do NuGet:
+2. ### Navigate to the project directory and Restore NuGet dependencies:
    ```bash
-   # Abre o caminho:
-   cd caminho/do/seu/projeto/detector-de-ofensas
+   # Navigate to the path:
+   cd path/to/your/project/offense-detector
 
-   # Restaura as dependências do NuGet:
+   # Restore NuGet dependencies:
    dotnet restore
 
-   #Abre o projeto no Visual Studio
-   dotnet sln Detector-Ofensas.sln
+   #Open the project in Visual Studio
+   dotnet sln Offense-Detector.sln
    ```
-  Substitua 'caminho/do/seu/projeto/detector-de-ofensas' pelo caminho real onde o seu projeto está localizado.
+  Replace 'path/to/your/project/offense-detector' with the actual path where your project is located.
 
-# Comandos
+<br>
+
+# Comandos 💬
 
   1. ### conectar com o banco de dados/DataBase:
 ```csharp
-// Define a database MySQL para conectar (campo obrigatório)
-DbService.Connect("server=localhost;uid=root;pwd=Sua-Senha;");
+// Defines the MySQL database to connect (required field)
+DbService.Connect("server=localhost;uid=root;pwd=Your-Password;");
 ```
 
   2. ### Verificar um texto:
 ```csharp
-// Define a database MySQL para conectar ou criar a database
-DbService.Connect("server=localhost;uid=root;pwd=sua-Senha;");
+// Defines the MySQL database to connect or create the database
+DbService.Connect("server=localhost;uid=root;pwd=your-Password;");
 
-//Retorna a lista das palavras identificadas no texto
-List<string> strings = FiltroRespeitoso.VerificarTexto(texto);
+//Returns the list of identified words in the text
+List<string> strings = RespectFilter.CheckText(text);
 
-// Calcula o percentual da ofensa
-double percentual = FiltroRespeitoso.ObterPercentual(string mensagem)
+// Calculate the offense percentage
+double percentage = RespectFilter.GetPercentage(string message)
 ```
 
-  4. ### Adicionar idiomas personalizados:
+  4. ### Add custom languages:
 
 ```csharp
-// Define a database MySQL para conectar ou criar a database
-DbService.Connect("server=localhost;uid=root;pwd=sua-Senha;");
+// Defines the MySQL database to connect or create the database
+DbService.Connect("server=localhost;uid=root;pwd=your-Password;");
 
-// Cria a lista de Ofensas 
-List<Ofensa> ofensas = new List<Ofensa> 
+// Create the Offenses list 
+List<Offense> offenses = new List<Offense> 
 {
-    new Ofensa { palavra = "palavra-1", nivel = 100 },
-    new Ofensa { palavra = "palavra-2", nivel = 80 }
+    new Offense { word = "word-1", level = 100 },
+    new Offense { word = "word-2", level = 80 }
 };
 
-// Adiciona ao Banco de Dados
-FiltroRespeitoso.CarregarPalavrasPersonalizadas(ofensas);
+// Add to the Database
+RespectFilter.LoadCustomWords(offenses);
 ```
 
-# Contribuindo
+<br>
 
-Se encontrar um problema ou tiver uma sugestão, sinta-se à vontade para abrir uma issue ou enviar um pull request. Contribuições são bem-vindas!
+# Contributing 🤝
 
-# Licença
+If you find an issue or have a suggestion, feel free to open an issue or submit a pull request. Contributions are welcome!
 
-Este projeto é licenciado sob a [Licença MIT](LICENSE).
+<br>
+
+# License 📝
+
+This project is licensed under the [MIT License](LICENSE).

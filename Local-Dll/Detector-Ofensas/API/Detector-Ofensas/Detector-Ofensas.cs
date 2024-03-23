@@ -10,7 +10,7 @@ using Detector_Ofensas.DataBase.Model;
 
 namespace Detector_Ofensas.API
 {
-    public partial class FiltroRespeitoso : FormatadorLinguístico
+    public partial class RespectFilter : FormatadorLinguístico
     {
 
         #region Comandos que o usuario pode usar
@@ -20,7 +20,7 @@ namespace Detector_Ofensas.API
         /// </summary>
         /// <param name="mensagem">menssagem a ser calculada</param>
         /// <returns>Valor de 1 a 100 de quanto foi ofensivo</returns>
-        public static double ObterPercentual(string mensagem)
+        public static double GetPercentage(string mensagem)
         {
             mensagem = mensagem.ToLower();
             if (string.IsNullOrEmpty(mensagem)) return 0;
@@ -36,7 +36,7 @@ namespace Detector_Ofensas.API
         /// </summary>
         /// <param name="mensagem">menssagem a ser calculada</param>
         /// <returns>uma lista de todas as palavra ofensivas</returns>
-        public static List<string> VerificarTexto(string mensagem)
+        public static List<string> CheckText(string mensagem)
         {
             mensagem = mensagem.ToLower();
             if (string.IsNullOrEmpty(mensagem)) throw new ArgumentNullException(nameof(mensagem), "Foi passa uma menssagem vazia para o algoritimo");
@@ -49,9 +49,9 @@ namespace Detector_Ofensas.API
         /// <summary>
         /// Carrega todas as palavra ofensivas personalizadas pelo usuario na pasta Language/
         /// </summary>
-        public static void CarregarPalavrasPersonalizadas(List<Ofensa> ofensas)
+        public static void LoadCustomWords(List<Offense> ofensas)
         {
-            foreach(Ofensa ofensa in ofensas)
+            foreach(Offense ofensa in ofensas)
             {
                 DbService.AddOfensa(ofensa);
             }

@@ -1,8 +1,8 @@
 ﻿namespace Detector_Ofensas.DataBase.Model
 {
-    public class Ofensa
+    public class Offense
     {
-        public string palavra { get; set; }
-        public int nivel {  get; set; }
+        public string word { get; set; }
+        public int level {  get; set; }
     }
 }

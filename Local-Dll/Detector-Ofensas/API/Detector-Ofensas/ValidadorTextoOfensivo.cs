@@ -14,7 +14,7 @@ namespace Detector_Ofensas.API
     /// <summary>
     /// Os comandos privados que a API usa para identificar os textos
     /// </summary>
-    public partial class FiltroRespeitoso
+    public partial class RespectFilter
     {
 
         #region // Commandos Privado
@@ -58,7 +58,7 @@ namespace Detector_Ofensas.API
 
                 if (!string.IsNullOrEmpty(palavra) && detectadas.Add(palavra))
                 {
-                    PontosDePenalidade += data.Where(x => x.palavra == palavra).Sum(x => x.nivel);
+                    PontosDePenalidade += data.Where(x => x.word == palavra).Sum(x => x.level);
                 }
             });
 
@@ -66,18 +66,18 @@ namespace Detector_Ofensas.API
         }
 
 
-        private static string DetectarPalavra(string parte, List<Ofensa> data)
+        private static string DetectarPalavra(string parte, List<Offense> data)
         {
             string temp = FormatadorLinguístico.NormalizarPalavra(parte);
             string result = "";
 
-            if (data.Any(palavra => levenstein.GetSimilarity(palavra.palavra, parte) > 0.7 || levenstein.GetSimilarity(palavra.palavra, temp) > 0.7))
+            if (data.Any(palavra => levenstein.GetSimilarity(palavra.word, parte) > 0.7 || levenstein.GetSimilarity(palavra.word, temp) > 0.7))
             {
                 foreach (var ofensa in data)
                 {
-                    if (jaroWinkler.GetSimilarity(temp, ofensa.palavra) > Sensibilidade)
+                    if (jaroWinkler.GetSimilarity(temp, ofensa.word) > Sensibilidade)
                     {
-                        result = ofensa.palavra;
+                        result = ofensa.word;
                         break;
                     }
 

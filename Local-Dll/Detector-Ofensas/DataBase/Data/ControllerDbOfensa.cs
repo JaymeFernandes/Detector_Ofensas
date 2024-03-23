@@ -37,38 +37,38 @@ namespace Detector_Ofensas.DataBase
         }
 
 
-        public static void AddOfensa(Ofensa ofensa)
+        public static void AddOfensa(Offense ofensa)
         {
-            if (string.IsNullOrEmpty(ofensa.palavra) || ofensa.nivel < 0 || ofensa.nivel > 100)
+            if (string.IsNullOrEmpty(ofensa.word) || ofensa.level < 0 || ofensa.level > 100)
             {
-                throw new ArgumentException($"Valores passados inválidos ({ofensa?.palavra} ou {ofensa?.nivel})");
+                throw new ArgumentException($"Valores passados inválidos ({ofensa?.word} ou {ofensa?.level})");
             }
 
-            if (OfensaExists(ofensa.palavra.ToLower())) return;
+            if (OfensaExists(ofensa.word.ToLower())) return;
 
             string quary = "INSERT into detector_ofensas.Ofensas values (@Palavra, @Nivel);";
 
             using(MySqlCommand command = new MySqlCommand(quary, _connection))
             {
-                command.Parameters.AddWithValue("@Palavra", ofensa.palavra.ToLower());
-                command.Parameters.AddWithValue("@Nivel", ofensa.nivel);
+                command.Parameters.AddWithValue("@Palavra", ofensa.word.ToLower());
+                command.Parameters.AddWithValue("@Nivel", ofensa.level);
                 command.ExecuteNonQuery();
             }
         }
 
 
-        public static List<Ofensa> GetOfensas()
+        public static List<Offense> GetOfensas()
         {
 
             if (DbService.OfensasCout() == 0)
             {
                 foreach (var ofensa in PT_BR.language)
                 {
-                    DbService.AddOfensa(new Ofensa() { palavra = ofensa.Key, nivel = ofensa.Value });
+                    DbService.AddOfensa(new Offense() { word = ofensa.Key, level = ofensa.Value });
                 }
             }
 
-            var result = new List<Ofensa>();
+            var result = new List<Offense>();
 
             string quary = "SELECT S_ofensa, N_nivel FROM detector_ofensas.Ofensas;";
 
@@ -81,7 +81,7 @@ namespace Detector_Ofensas.DataBase
                         string palavra = render["S_ofensa"].ToString();
                         int nivel = Convert.ToInt32(render["N_nivel"]);
 
-                        result.Add(new Ofensa() { palavra = palavra, nivel = nivel });
+                        result.Add(new Offense() { word = palavra, level = nivel });
                     }
                 }
             }
