@@ -10,15 +10,15 @@ using WebApplication1.Models;
 
 namespace Detector_Ofensas.API
 {
-    /// <summary>
-    /// Os comandos privados que a API usa para identificar os textos
-    /// </summary>
-    public partial class RespectFilter
+	/// <summary>
+	/// A class containing private commands utilized by the API for text identification.
+	/// </summary>
+	public partial class RespectFilter
     {
 
-        #region // Commandos Privado
+		#region // Private Commands
 
-        private static async Task<List<string>> SearchForbiddenWords(string Text, List<Ofensa> data)
+		private static async Task<List<string>> SearchForbiddenWords(string Text, List<Ofensa> data)
         {
 
             Text = LinguisticFormatter.ClearSentence(Text);

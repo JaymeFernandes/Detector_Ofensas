@@ -148,11 +148,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\Detector-Ofensas\Configurações.cs" />
+    <Compile Include="API\Detector-Ofensas\Settings.cs" />
     <Compile Include="API\Detector-Ofensas\Detector-Ofensas.cs" />
-    <Compile Include="API\Detector-Ofensas\ValidadorTextoOfensivo.cs" />
+    <Compile Include="API\Detector-Ofensas\OffensiveTextValidator.cs" />
     <Compile Include="API\Language\PT_BR.cs" />
-    <Compile Include="API\StringTools\FormatadorLinguístico.cs" />
+    <Compile Include="API\StringTools\LinguisticFormatter.cs" />
     <Compile Include="DataBase\Data\ConnectDbService.cs" />
     <Compile Include="DataBase\Data\ControllerDbOfensa.cs" />
     <Compile Include="DataBase\Model\Ofensa.cs" />

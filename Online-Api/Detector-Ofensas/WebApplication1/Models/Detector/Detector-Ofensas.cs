@@ -16,10 +16,10 @@ namespace Detector_Ofensas.API
 		#region Comandos que o usuario pode usar
 
 		/// <summary>
-		/// Faz o calculo de quanto o texto é ofensivo em porcentagem
+		/// Calculates the percentage of offensiveness in a text message.
 		/// </summary>
-		/// <param name="message">menssagem a ser calculada</param>
-		/// <returns>Valor de 1 a 100 de quanto foi ofensivo</returns>
+		/// <param name="message">The message to be evaluated.</param>
+		/// <returns>A value from 1 to 100 indicating the level of offensiveness.</returns>
 		public static async Task<double> GetPercentage(string message, List<Ofensa> data)
         {
 			message = message.ToLower();
@@ -32,10 +32,10 @@ namespace Detector_Ofensas.API
         }
 
 		/// <summary>
-		/// Procura todas a palavras ofensivas
+		/// Finds all offensive words in the given message.
 		/// </summary>
-		/// <param name="message">menssagem a ser calculada</param>
-		/// <returns>uma lista de todas as palavra ofensivas</returns>
+		/// <param name="message">The message to be searched.</param>
+		/// <returns>A list of all offensive words found in the message.</returns>
 		public static async Task<List<string>> CheckText(string message, List<Ofensa> data)
         {
 			if (string.IsNullOrEmpty(message)) return null;

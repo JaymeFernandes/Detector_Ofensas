@@ -9,9 +9,9 @@ namespace Detector_Ofensas.API
 {
     public partial class RespectFilter
     {
-        #region variáveis
+		#region Variables
 
-        public static double Sensibilidade { private get; set; } = 0.93;
+		public static double Sensibilidade { private get; set; } = 0.93;
         private static JaroWinkler jaroWinkler { get; set; } = new JaroWinkler();
         private static Levenstein levenstein { get; set; } = new Levenstein();
 

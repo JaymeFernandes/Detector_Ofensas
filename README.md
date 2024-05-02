@@ -1,6 +1,8 @@
 # Offense Detector 🔍
 
-The Offense Detector is a simple API for identifying offensive language in texts. By using string similarity algorithms, it checks if a text contains words considered offensive. The API was optimized to analyze 32,681 characters in 20 seconds and reduced it to 2 seconds.
+The Offense Detector is a simple API for identifying offensive language in texts. By using string similarity algorithms, it checks if a text contains words considered offensive.
+
+[Curious how it works?](Algorithm/README.md)
 
 <br>
 
@@ -14,6 +16,16 @@ The Offense Detector is a simple API for identifying offensive language in texts
   </tr>
 </table>
 
+
+# Performance Boost ⚡️
+
+We recently optimized our API that used to analyze 32,681 characters in 20 seconds. Now, it completes the same task in just 2 seconds!
+
+This achievement was made possible by utilizing parallel iterations with Parallel.ForEach.
+
+This approach automatically divides the workload among processors, allowing each core to work simultaneously.
+
+The result? Significantly improved performance! 🚀
 
 <br>
 

@@ -1,7 +1,8 @@
 # Detector de Ofensas 🔍
 
 O Detector de Ofensas é uma API simples para a identificação de linguagem ofensiva em textos. Utilizando algoritmos de similaridade de strings, verifica se um texto contém palavras consideradas ofensivas.
-Foi otimizado a API que analizava 32.681 caracteres em 20 segundos e diminuiu para 2 segundos
+
+[Está curioso como funciona?](Algorithm/README.md)
 
 <br>
 
@@ -14,6 +15,18 @@ Foi otimizado a API que analizava 32.681 caracteres em 20 segundos e diminuiu pa
     <td><a href="https://github.com/JaymeFernandes/Detector_Ofensas/blob/main/README_es.md">Español</a></td>
   </tr>
 </table>
+
+<br>
+
+# Melhoria de Desempenho ⚡️
+
+Recentemente, otimizamos nossa API que analisava 32.681 caracteres em 20 segundos. Agora, ela conclui a mesma tarefa em apenas 2 segundos!
+
+Isso foi possível graças ao uso das iterações em paralelo com Parallel.ForEach.
+
+Essa abordagem divide a tarefa entre os processadores, permitindo que cada núcleo trabalhe simultaneamente.
+ 
+O resultado? Um desempenho muito mais rápido! 🚀
 
 <br>
 

@@ -10,8 +10,8 @@ namespace Detector_Ofensas.API
 	{
         private readonly static List<string> _remove = new List<string>()
         {
-            "a", "o", "e", "é", "de", "do", "da", "dos", "das", "em", "na", "no", "nos", "nas", "um", "uma", "uns", "umas", "por", "para", "com", "como", "se", "mas", "mais", "menos", "ou", "ao", "aos", "à", "às", "onde", "quando", "porque", "que", "quem", "qual", "cujo", "cujos", "cuja", "cujas", "isto", "isso", "aquilo", "mesmo", "mesma", "mesmos", "mesmas", "também", "ainda", "muito", "muita", "muitos", "muitas", "ele", "ela", "eles", "elas", "você", "nós", "vossos", "vosso", "vos", "teu", "tua", "teus", "tuas", "meu", "minha", "meus", "minhas", "seu", "sua", "seus", "suas"
-        };
+            "a", "o", "e", "é", "de", "do", "da", "dos", "das", "em", "na", "no", "nos", "nas", "um", "uma", "uns", "umas", "por", "para", "com", "como", "se", "mas", "mais", "menos", "ou", "ao", "aos", "à", "às", "onde", "quando", "porque", "que", "quem", "qual", "cujo", "cujos", "cuja", "cujas", "isto", "isso", "aquilo", "mesmo", "mesma", "mesmos", "mesmas", "também", "ainda", "muito", "muita", "muitos", "muitas", "ele", "ela", "eles", "elas", "você", "nós", "vossos", "vosso", "vos", "teu", "tua", "teus", "tuas", "meu", "minha", "meus", "minhas", "seu", "sua", "seus", "suas", "and", "but", "or", "so", "yet", "for", "nor", "although", "however", "nevertheless", "therefore", "meanwhile", "consequently", "moreover", "furthermore", "likewise", "thus", "in", "otherwise", "as", "however", "the", "for", "to"
+		};
 
         private readonly static Dictionary<char, char> _symbols = new Dictionary<char, char>()
         {
